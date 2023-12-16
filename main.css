@@ -2663,3 +2663,10 @@ font-family: 'Times New Roman', Times, serif !important;
 #right h2{
 margin-left: 10px;
 }
+.highlightStudent, .highlightTeacher{
+  color:whitesmoke;
+  background-color: #357ebd;
+}
+.center{
+  text-align: center;
+}

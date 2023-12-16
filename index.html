@@ -41,8 +41,40 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-
-
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script>
+function subFormStudent (){
+    $.ajax({
+        url:'https://api.apispreadsheets.com/data/nSw4ALqGvridagus/',
+        type:'post',
+        data:$("#formName").serializeArray(),
+        success: function(){
+          alert("Student Data Submitted :")
+          window.location.reload();
+        },
+        error: function(){
+          alert("There was an error :(")
+        }
+    });
+}
+function subFormTeacher (){
+    $.ajax({
+        url:'https://api.apispreadsheets.com/data/nSw4ALqGvridagus/',
+        type:'post',
+        data:$("#teacherForm").serializeArray(),
+        success: function(){
+          alert("Teacher Data Submitted :)");
+          window.location.reload();
+        },
+        error: function(){
+          alert("There was an error :(")
+        }
+    });
+}
+</script>
 
 
 </head>
@@ -64,7 +96,7 @@
                     <i class="fa fa-bars" style ="font-size: 22px;"></i>
                 </a>
                 <!-- LOGO SECTION -->
-                <header class="navbar-header1" style="text-align: center; width: 90%; font-size: 20px;font-family: 'Times New Roman', Times, serif;">
+                <header class="navbar-header1" style="text-align: center; width: 90%; font-size: 30px;font-family: 'Times New Roman', Times, serif;color: #bc131f;">
                     Gurugyanam Coaching Classes
                 </header>
                 <!-- END LOGO SECTION -->
@@ -88,10 +120,19 @@
             <ul id="menu" class="collapse">                
                 <li class="panel active">
                     <a href="index.html" >
-                        <i class="icon-table"></i> Upcoming Soon
+                        <i class="icon-table"></i> Coming Soon
                     </a>                   
                 </li>
                 <li class="panel items">
+                    <a href="#">Test series </a>
+                </li>
+                <li class="panel items">
+                    <a href="#"> Live Clasess</a>
+                </li>
+                <li class="panel items">
+                    <a href="#"> Free Assistance</a>
+                </li>
+                <!-- <li class="panel items">
                     <a href="#"> Item1</a>
                 </li>
                 <li class="panel items">
@@ -108,16 +149,7 @@
                 </li>
                 <li class="panel items">
                     <a href="#"> Item1</a>
-                </li>
-                <li class="panel items">
-                    <a href="#"> Item1</a>
-                </li>
-                <li class="panel items">
-                    <a href="#"> Item1</a>
-                </li>
-                <li class="panel items">
-                    <a href="#"> Item1</a>
-                </li>
+                </li> -->
             </ul>
 
         </div>
@@ -151,16 +183,13 @@
                                 </ol>
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                    <img class="d-block" src="https://picsum.photos/200/300
-                                    " alt="First slide">
+                                    <img class="d-block" src="carouselImage1.jpg" alt="First slide">
                                   </div>
                                   <div class="carousel-item">
-                                    <img class="d-block" src="https://picsum.photos/id/237/200/300
-                                    " alt="Second slide">
+                                    <img class="d-block" src="carouselImage2.jpg" alt="Second slide">
                                   </div>
                                   <div class="carousel-item">
-                                    <img class="d-block " src="https://picsum.photos/200/300
-                                    " alt="Third slide">
+                                    <img class="d-block " src="carouselImage3.jpg" alt="Third slide">
                                   </div>
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselExampleIndicators"  onclick="$('#myCarousel').carousel('prev')" role="button" data-slide="prev">
@@ -184,24 +213,18 @@
                     <div class="col-lg-4">
 
                         <div class="chat-panel panel panel-success">
-                            <div class="panel-heading">
+                            <div class="panel-heading center">
                                 <i class="icon-comments"></i>
-                                 Student signin
+                                 Student Signup/Login
                             
                             </div>
 
                             <div class="panel-body">
                                 <div class="signin">
-                                    <!-- <div class="row signin-button">
-                                        
-                                            <div class="col-lg-6"> sdjfgss</div>
-                                            <div class="col-lg-6"> dsfjhsdgfsd </div>
-                                        
-                                    </div> -->
-                                    <button id="signin-button">Signup</button>
-                                    <button id ="signup-button">Login</button>
+                                    <button id="signin-button" onclick={highlightStudent(this)} class="highlightStudent">Signup</button>
+                                    <button id ="signup-button" onclick={highlightStudent(this)}>Login</button>
                                     <form id ="formName">
-                                    <p class="singup-details signupName " id ="nameText">Enter Your Name :</p>
+                                    <p class="singup-details" id ="nameText">Enter Your Name :</p>
                                     <input class="singup-details-value signupName" id ="nameValue" key ="nameValue" type="text"  name="nameValue"placeholder="Enter your name"></input>
                                     <br>
                                     <p class="singup-details">Enter mobile number :</p>
@@ -210,13 +233,11 @@
                                     <p class="singup-details">Enter password :</p>
                                     <input class="singup-details-value" key = "password" type="text" name="password"placeholder="password"></input>
                                      </br>
-                                     <button id ="submit" type="submit" class="btn btn-primary submit-button">Submit</button>
                                 </form>
+                                <button id ="submit" type="submit" class="btn btn-primary submit-button" onclick="subFormStudent()" >Submit</button>
                                 </div>
+
                             </div>
-
-                           
-
                         </div>
 
 
@@ -224,13 +245,13 @@
                     <div class="col-lg-4">
                          
                        <div class="panel panel-danger">
-                            <div class="panel-heading">
-                                <i class="icon-bell"></i> Scan the QR to support
+                            <div class="panel-heading center">
+                                <i class="icon-bell center"></i> Scan the QR to have a chat
                             </div>
 
                             <div class="panel-body">
                                 <div class="list-group">
-                                   <img src="1G.jpg">
+                                   <img src="WhatsApp-QR-code.png">
                                 </div>
 
                                 <!-- <a href="#" class="btn btn-default btn-block btn-primary">View All Alerts</a> -->
@@ -244,22 +265,16 @@
                     <div class="col-lg-4">
                        
                         <div class="chat-panel panel panel-success">
-                            <div class="panel-heading">
+                            <div class="panel-heading center">
                                 <i class="icon-comments"></i>
-                                Teacher SignIn
+                                Teacher Signup/Login
                             
                             </div>
 
                             <div class="panel-body">
                                 <div class="signin">
-                                    <!-- <div class="row signin-button">
-                                        
-                                            <div class="col-lg-6"> sdjfgss</div>
-                                            <div class="col-lg-6"> dsfjhsdgfsd </div>
-                                        
-                                    </div> -->
-                                    <button id="teacher-signin-button">Signup</button>
-                                    <button id ="teacher-signup-button">Login</button>
+                                    <button id="teacher-signin-button"  onclick={highlightTeacher(this)} class="highlightTeacher">Signup</button>
+                                    <button id ="teacher-signup-button" onclick={highlightTeacher(this)}>Login</button>
                                     <form id ="teacherForm">
                                     <p class="singup-details teacher-signupName " id ="nameText">Enter Your Name :</p>
                                     <input class="singup-details-value teacher-signupName" id ="nameValue"  name ="nameValue"key ="text" type="text" placeholder="Enter your name"></input>
@@ -271,8 +286,9 @@
                                     <p class="singup-details">Enter password :</p>
                                     <input class="singup-details-value" key = "password" type="text" name = "password"placeholder="password"></input>
                                      </br>
-                                     <button type="submit" class="btn btn-primary submit-button">Submit</button>
+                                    
                                 </form>
+                                <button id ="submit" type="submit" class="btn btn-primary submit-button" onclick="subFormTeacher()" >Submit</button>
                                 </div>
                             </div>
 
@@ -362,6 +378,15 @@
 
 
     <script>
+        function highlightStudent(button){
+            $(".highlightStudent").removeClass("highlightStudent");
+            $(button).addClass("highlightStudent");
+        }
+        function highlightTeacher(button){
+            $(".highlightTeacher").removeClass("highlightTeacher");
+            $(button).addClass("highlightTeacher");
+        }
+
          document.getElementById("signup-button").addEventListener("click", handleSignUpClick);
          document.getElementById("signin-button").addEventListener("click",handleSignInClick)
          function handleSignUpClick(){
@@ -389,31 +414,9 @@
             }
          }
      </script>
-     <script>
-        const scriptURLStudent = 'https://script.google.com/macros/s/AKfycbzHEe_8pkoJHX4qsYKa0jsHz-TCsD_H9Bk9tVE2HGENNUJXxQitR5qILEPT7LRlvggW/exec';
-        const formOfStudent = document.forms['formName']
-      
-        formOfStudent.addEventListener('submit', e => {
-          e.preventDefault()
-          fetch(scriptURLStudent, { method: 'POST', body: new FormData(formOfStudent)})
-            .then(response => alert("Thank you! your form is submitted successfully." ))
-            .then(() => {  window.location.reload(); })
-            .catch(error => console.error('Error!', error.message))
-        })
-        const scriptURLTeacher = 'https://script.google.com/macros/s/AKfycbyku4BFRmu6bU3cv9M_h-OEBGvd3tJdRp1jymfN1fpdOl5mxQwmOP44kLe4TyHhOvqf2A/exec';
-        const formOfTeacher = document.forms['teacherForm']
-      
-        formOfTeacher.addEventListener('submit', e => {
-          e.preventDefault()
-          fetch(scriptURLTeacher, { method: 'POST', body: new FormData(formOfTeacher)})
-            .then(response => alert("Thank you! your form is submitted successfully." ))
-            .then(() => {  window.location.reload(); })
-            .catch(error => console.error('Error!', error.message))
-        })
 
-      </script>
-     
 </body>
 
     <!-- END BODY -->
+    <!-- method="post" action="https://script.google.com/macros/s/AKfycbwDwm8huEp_wJfJt7LA--nXZuCmM9CW5LxEE3JtH1ilTaHZE0xCG6t6lfnQnRsX38L_/exec" name="formName" target="_blank"  -->
 </html>
